@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termos — VideosHilarios</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #FBF7F5;
+    --surface: #FFFFFF;
+    --ink: #201417;
+    --ink-soft: #5B4A4E;
+    --accent: #FF2D55;
+    --accent-soft: #FFE3E9;
+    --border: #E8DBDC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #171112;
+      --surface: #1E1618;
+      --ink: #F5EDEE;
+      --ink-soft: #C9B7BB;
+      --accent: #FF5577;
+      --accent-soft: #3A1620;
+      --border: #3A2A2D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #171112;
+    --surface: #1E1618;
+    --ink: #F5EDEE;
+    --ink-soft: #C9B7BB;
+    --accent: #FF5577;
+    --accent-soft: #3A1620;
+    --border: #3A2A2D;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.65;
+    margin: 0;
+    padding: 5rem 1.5rem 6rem;
+  }
+  .page { max-width: 680px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 1.75rem;
+  }
+  h1 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 5vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.6rem;
+    text-wrap: balance;
+  }
+  .meta {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin: 0 0 3rem;
+  }
+  .lede {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0 0 3rem;
+  }
+  section { padding: 2.1rem 0; border-top: 1px solid var(--border); }
+  .num {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin: 0 0 0.75rem;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 0.9rem; max-width: 65ch; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0.9rem 0; padding-left: 1.25rem; max-width: 62ch; }
+  li { margin-bottom: 0.5rem; }
+  strong { color: var(--ink); font-weight: 600; }
+  a { color: var(--accent); text-decoration-color: var(--accent-soft); text-underline-offset: 0.15em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .crosslink {
+    display: block;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .crosslink a { color: var(--ink); font-weight: 600; }
+
+  footer { margin-top: 4rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="page">
+  <span class="eyebrow">VideosHilarios · Automação TikTok</span>
+  <h1>Termos de Serviço</h1>
+  <p class="meta">Última atualização: 29 de agosto de 2026</p>
+
+  <p class="lede">
+    Estes termos cobrem uma ferramenta pessoal de automação — não um produto
+    distribuído a terceiros. Ela processa e publica vídeos no perfil de uma
+    única conta do TikTok, controlada e operada por uma pessoa física.
+  </p>
+
+  <section>
+    <span class="num">01</span>
+    <h2>O que a aplicação faz</h2>
+    <p>
+      Prepara vídeos (conversão de formato, geração de miniatura) e os publica
+      no perfil da conta autorizada usando a Content Posting API oficial do
+      TikTok. Não interage com nenhuma outra conta além da que concede
+      autorização explícita via login OAuth.
+    </p>
+  </section>
+
+  <section>
+    <span class="num">02</span>
+    <h2>Conteúdo permitido</h2>
+    <p>
+      Só é publicado conteúdo que o operador confirma ser:
+    </p>
+    <ul>
+      <li>De sua própria autoria, ou</li>
+      <li>Expressamente autorizado para repost pelo criador original.</li>
+    </ul>
+    <p>
+      A aplicação não faz scraping de conteúdo de terceiros nem republica em
+      massa vídeos sem autorização confirmada pelo operador.
+    </p>
+  </section>
+
+  <section>
+    <span class="num">03</span>
+    <h2>Responsabilidade do operador</h2>
+    <p>
+      A aplicação não verifica automaticamente direitos autorais de nenhum
+      vídeo. Cabe ao operador confirmar, antes de cada publicação, que tem
+      autorização válida para o conteúdo. A aplicação é uma ferramenta de
+      execução, não um serviço de verificação de direitos.
+    </p>
+  </section>
+
+  <section>
+    <span class="num">04</span>
+    <h2>Sem garantias</h2>
+    <p>
+      Fornecida como está ("as is"), para uso pessoal, sem garantia de
+      disponibilidade contínua ou ausência de erros. Não há acordo de nível de
+      serviço (SLA).
+    </p>
+  </section>
+
+  <section>
+    <span class="num">05</span>
+    <h2>Revogação de acesso</h2>
+    <p>
+      A conta autorizada pode revogar o acesso da aplicação a qualquer momento
+      em <strong>Configurações do TikTok → Segurança → Apps e sites
+      conectados</strong>. A revogação encerra imediatamente a capacidade da
+      aplicação de publicar em nome dessa conta.
+    </p>
+  </section>
+
+  <section>
+    <span class="num">06</span>
+    <h2>Alterações a estes termos</h2>
+    <p>
+      Estes termos podem ser atualizados conforme a automação evolui. A data
+      no topo desta página reflete a versão vigente.
+    </p>
+  </section>
+
+  <section>
+    <span class="num">07</span>
+    <h2>Contato</h2>
+    <p>
+      Questões sobre estes termos: <a href="mailto:testeprivado77@gmail.com">testeprivado77@gmail.com</a>,
+      ou como issue no repositório do projeto:
+      <a href="https://github.com/wbgamma/MEME-VIDEOS" target="_blank" rel="noopener">github.com/wbgamma/MEME-VIDEOS</a>.
+    </p>
+  </section>
+
+  <p class="crosslink">
+    Ver também a <a href="privacy.html">Política de Privacidade</a>.
+  </p>
+
+  <footer>VideosHilarios — automação pessoal de publicação de vídeo.</footer>
+</div>
+
+</body>
+</html>

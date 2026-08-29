@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideosHilarios — Automação</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #FBF7F5;
+    --ink: #201417;
+    --ink-soft: #5B4A4E;
+    --accent: #FF2D55;
+    --accent-soft: #FFE3E9;
+    --border: #E8DBDC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #171112;
+      --ink: #F5EDEE;
+      --ink-soft: #C9B7BB;
+      --accent: #FF5577;
+      --accent-soft: #3A1620;
+      --border: #3A2A2D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #171112;
+    --ink: #F5EDEE;
+    --ink-soft: #C9B7BB;
+    --accent: #FF5577;
+    --accent-soft: #3A1620;
+    --border: #3A2A2D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 6rem 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  .page { max-width: 560px; }
+  .eyebrow {
+    display: inline-flex;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 1.75rem;
+  }
+  h1 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  p { color: var(--ink-soft); font-size: 1.05rem; max-width: 55ch; margin: 0 0 2.5rem; }
+  .links { display: flex; flex-direction: column; gap: 0.9rem; border-top: 1px solid var(--border); padding-top: 1.75rem; }
+  a { color: var(--ink); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+  a::after { content: "→"; color: var(--accent); transition: transform 0.15s; }
+  a:hover::after { transform: translateX(3px); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <span class="eyebrow">Automação pessoal · TikTok</span>
+  <h1>VideosHilarios</h1>
+  <p>
+    Ferramenta pessoal que processa e publica vídeos — próprios ou expressamente
+    autorizados por seus criadores — no perfil de uma única conta do TikTok, via
+    Content Posting API oficial.
+  </p>
+  <div class="links">
+    <a href="privacy.html">Política de Privacidade</a>
+    <a href="terms.html">Termos de Serviço</a>
+    <a href="https://github.com/wbgamma/MEME-VIDEOS">Repositório no GitHub</a>
+  </div>
+</div>
+</body>
+</html>
