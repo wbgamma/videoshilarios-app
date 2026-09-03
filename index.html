@@ -4,34 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VideosHilarios — Automação</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
   :root {
     --ground: #FBF7F5;
+    --surface: #FFFFFF;
     --ink: #201417;
     --ink-soft: #5B4A4E;
     --accent: #FF2D55;
     --accent-soft: #FFE3E9;
     --border: #E8DBDC;
+    --code-bg: #171112;
+    --code-border: #3A2A2D;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --ground: #171112;
+      --surface: #1E1618;
       --ink: #F5EDEE;
       --ink-soft: #C9B7BB;
       --accent: #FF5577;
       --accent-soft: #3A1620;
       --border: #3A2A2D;
+      --code-bg: #0F0B0C;
+      --code-border: #3A2A2D;
     }
   }
   :root[data-theme="dark"] {
     --ground: #171112;
+    --surface: #1E1618;
     --ink: #F5EDEE;
     --ink-soft: #C9B7BB;
     --accent: #FF5577;
     --accent-soft: #3A1620;
     --border: #3A2A2D;
+    --code-bg: #0F0B0C;
+    --code-border: #3A2A2D;
   }
+
   * { box-sizing: border-box; }
   body {
     background: var(--ground);
@@ -39,11 +49,32 @@
     font-family: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding: 6rem 1.5rem;
-    display: flex;
-    justify-content: center;
   }
-  .page { max-width: 560px; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.5rem; }
+
+  header.hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .brand img {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+  }
+  .brand-name {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
   .eyebrow {
     display: inline-flex;
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -54,38 +85,245 @@
     background: var(--accent-soft);
     padding: 0.35rem 0.7rem;
     border-radius: 999px;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
   h1 {
     font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.1rem;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 1.18rem;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 0;
+  }
+
+  section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  .num {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
     font-weight: 600;
-    font-size: clamp(2rem, 5vw, 2.6rem);
-    line-height: 1.1;
+    font-size: 1.7rem;
     margin: 0 0 1rem;
     text-wrap: balance;
   }
-  p { color: var(--ink-soft); font-size: 1.05rem; max-width: 55ch; margin: 0 0 2.5rem; }
-  .links { display: flex; flex-direction: column; gap: 0.9rem; border-top: 1px solid var(--border); padding-top: 1.75rem; }
-  a { color: var(--ink); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
-  a::after { content: "→"; color: var(--accent); transition: transform 0.15s; }
-  a:hover::after { transform: translateX(3px); }
+  p { margin: 0 0 1rem; max-width: 65ch; }
+  p:last-child { margin-bottom: 0; }
+
+  .shots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  figure {
+    margin: 0;
+    border: 1px solid var(--code-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--code-bg);
+  }
+  figure img { display: block; }
+  figcaption {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding: 0.65rem 0.9rem;
+    border-top: 1px solid var(--code-border);
+    background: var(--surface);
+  }
+  @media (max-width: 700px) {
+    .shots { grid-template-columns: 1fr; }
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 2rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 640px) {
+    .features { grid-template-columns: 1fr; }
+  }
+  .feature h3 {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.35rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .feature h3 .tag {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .feature p { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  .cli {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    background: var(--code-bg);
+    color: #E8E0E1;
+    border: 1px solid var(--code-border);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+  }
+  .cli div { white-space: pre; }
+  .cli .prompt { color: var(--accent); }
+  .cli .comment { color: #8A7377; }
+
+  footer {
+    padding: 3rem 0 5rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+  }
+  .links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .links a::after { content: "→"; color: var(--accent); transition: transform 0.15s; }
+  .links a:hover::after { transform: translateX(3px); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .fine {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
 </style>
 </head>
 <body>
-<div class="page">
-  <span class="eyebrow">Automação pessoal · TikTok</span>
-  <h1>VideosHilarios</h1>
-  <p>
-    Ferramenta pessoal que processa e publica vídeos — próprios ou expressamente
-    autorizados por seus criadores — no perfil de uma única conta do TikTok, via
-    Content Posting API oficial.
-  </p>
-  <div class="links">
-    <a href="privacy.html">Política de Privacidade</a>
-    <a href="terms.html">Termos de Serviço</a>
-    <a href="https://github.com/wbgamma/MEME-VIDEOS">Repositório no GitHub</a>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <img src="screenshots/icon.png" alt="Ícone do VideosHilarios">
+      <span class="brand-name">VideosHilarios</span>
+    </div>
+    <span class="eyebrow">Aplicativo de desktop · Automação pessoal</span>
+    <h1>Uma esteira pessoal para publicar vídeo no TikTok, sem abrir o app toda vez.</h1>
+    <p class="lede">
+      Ferramenta de linha de comando (CLI), em Python, que baixa, converte para
+      9:16 e publica vídeos no perfil do próprio operador — usando a API
+      oficial do TikTok, com autorização OAuth explícita da conta.
+    </p>
   </div>
-</div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="num">01</span>
+    <h2>O app rodando de verdade</h2>
+    <p>
+      Não existe interface web — o produto é o terminal. As duas capturas
+      abaixo são da execução real do fluxo de demonstração enviado na
+      auditoria: início do roteiro guiado e uma publicação chegando a
+      <code>PUBLISH_COMPLETE</code> via Content Posting API.
+    </p>
+    <div class="shots">
+      <figure>
+        <img src="screenshots/cli-inicio.jpg" alt="Terminal mostrando o início do roteiro de demonstração do VideosHilarios">
+        <figcaption>tools/demo_review.py — início do roteiro</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/cli-publish.jpg" alt="Terminal mostrando o comando de publicação chegando ao status PUBLISH_COMPLETE">
+        <figcaption>main.py publish — status PUBLISH_COMPLETE</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="num">02</span>
+    <h2>Como o pipeline funciona</h2>
+    <p>Cinco comandos cobrem o ciclo inteiro, do conteúdo bruto até o post publicado.</p>
+    <div class="cli"><div><span class="comment"># 1. baixar / ingerir conteúdo (fonte de stock ou repost autorizado)</span>
+<span class="prompt">$</span> python main.py fetch --source pexels --category "funny animals"
+
+<span class="comment"># 2. converter para 9:16 + gerar thumbnail (FFmpeg)</span>
+<span class="prompt">$</span> python main.py process
+
+<span class="comment"># 3. autorizar a conta (OAuth 2.0 + PKCE) — uma vez só</span>
+<span class="prompt">$</span> python main.py tiktok-login
+
+<span class="comment"># 4. publicar direto no perfil, via Content Posting API</span>
+<span class="prompt">$</span> python main.py publish --platform tiktok</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="num">03</span>
+    <h2>Recursos</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Deduplicação <span class="tag">hash + id</span></h3>
+        <p>Cada vídeo é identificado por hash de arquivo e id de origem — rodar o mesmo fetch duas vezes nunca baixa duplicado.</p>
+      </div>
+      <div class="feature">
+        <h3>Conversão 9:16 <span class="tag">FFmpeg</span></h3>
+        <p>Letterbox automático, normalização de áudio e geração de thumbnail para cada item processado.</p>
+      </div>
+      <div class="feature">
+        <h3>Login OAuth <span class="tag">PKCE + refresh</span></h3>
+        <p>Autorização via navegador local (localhost:8000/callback); o token renova sozinho quando expira.</p>
+      </div>
+      <div class="feature">
+        <h3>Direct Post <span class="tag">video.publish</span></h3>
+        <p>Publica direto no perfil autorizado e acompanha o status até a confirmação da API.</p>
+      </div>
+      <div class="feature">
+        <h3>Rascunho <span class="tag">video.upload</span></h3>
+        <p>Alternativa que envia para a caixa de entrada do criador, que finaliza a publicação no próprio app.</p>
+      </div>
+      <div class="feature">
+        <h3>Fila com estado <span class="tag">SQLite</span></h3>
+        <p>Cada item percorre estados (baixado → pronto → agendado → publicado) rastreáveis em banco local.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy.html">Política de Privacidade</a>
+      <a href="terms.html">Termos de Serviço</a>
+      <a href="https://github.com/wbgamma/MEME-VIDEOS">Código-fonte</a>
+    </div>
+    <p class="fine">
+      VideosHilarios é uma ferramenta de uso pessoal — não há cadastro de
+      terceiros nem contas de outros usuários envolvidas. Roda inteiramente
+      na máquina do operador; nenhum dado é enviado a servidores próprios.
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>
